@@ -17,7 +17,9 @@
     height: var(--header-height);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    /* Kullanıcı butonlarını sağa yasla */
+    position: relative;
 }
 
 .navbar-brand {
@@ -26,15 +28,41 @@
     gap: 0.5rem;
     text-decoration: none;
     color: var(--color-primary);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: slideDown 0.5s ease-out;
+}
+
+.navbar-brand:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 .navbar-logo-icon {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    transition: transform 0.3s;
+}
+
+.navbar-brand:hover .navbar-logo-icon {
+    transform: rotate(-10deg);
 }
 
 .navbar-logo-text {
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 800;
     letter-spacing: -0.5px;
 }
 
