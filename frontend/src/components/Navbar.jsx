@@ -16,10 +16,12 @@ const Navbar = () => {
     return (
         <header className="navbar">
             <div className="navbar-container">
-                <Link to="/" className="navbar-brand">
-                    <span className="navbar-logo-icon">🚚</span>
-                    <span className="navbar-logo-text">YükBul</span>
-                </Link>
+                <div className="navbar-brand-wrapper">
+                    <Link to="/" className="navbar-brand">
+                        <span className="navbar-logo-icon">🚚</span>
+                        <span className="navbar-logo-text">YükBul</span>
+                    </Link>
+                </div>
 
                 <nav className="navbar-menu">
                     {user ? (

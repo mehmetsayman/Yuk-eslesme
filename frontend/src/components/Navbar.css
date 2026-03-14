@@ -20,6 +20,22 @@
     justify-content: flex-end;
     /* Kullanıcı butonlarını sağa yasla */
     position: relative;
+    padding-right: 1.5rem;
+    /* Sağdan boşluğu artırdık */
+}
+
+/* Ortalama sorununu kesin olarak çözen kapsayıcı */
+.navbar-brand-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    /* Logoya değil sağdaki butonlara tıklanabilmesi için */
 }
 
 .navbar-brand {
@@ -28,36 +44,36 @@
     gap: 0.5rem;
     text-decoration: none;
     color: var(--color-primary);
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    pointer-events: auto;
+    /* Logonun tıklanabilir kalması için */
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation: slideDown 0.5s ease-out;
+    animation: slideDown 0.6s ease-out;
 }
 
 .navbar-brand:hover {
-    transform: translateX(-50%) scale(1.05);
+    transform: scale(1.05);
+    /* Wrapper ile ortalandığı için translateX'e gerek kalmadı */
 }
 
 @keyframes slideDown {
     from {
         opacity: 0;
-        transform: translate(-50%, -20px);
+        transform: translateY(-25px);
     }
 
     to {
         opacity: 1;
-        transform: translate(-50%, 0);
+        transform: translateY(0);
     }
 }
 
 .navbar-logo-icon {
     font-size: 1.75rem;
-    transition: transform 0.3s;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .navbar-brand:hover .navbar-logo-icon {
-    transform: rotate(-10deg);
+    transform: rotate(-12deg) scale(1.1);
 }
 
 .navbar-logo-text {
