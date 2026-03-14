@@ -1,0 +1,110 @@
+.dashboard-container {
+    padding-bottom: 2rem;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-card {
+    background-color: var(--color-bg-card);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+    border: 1px solid var(--color-border);
+}
+
+.mb-form {
+    border-left: 4px solid var(--color-primary);
+}
+
+/* Şoför ekranında filtre kısmının tam ekrana yayılması algısı */
+.container-full-bleed {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    background-color: #EBF5FF;
+    /* Çok açık mavi arka plan */
+    border-bottom: 1px solid #BFDBFE;
+    padding: 1rem;
+}
+
+@media (min-width: 600px) {
+    .container-full-bleed {
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: var(--border-radius-lg);
+        border: 1px solid #BFDBFE;
+        padding: 1.5rem;
+    }
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 600px) {
+    .form-row {
+        flex-direction: row;
+    }
+}
+
+.job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.driver-job-list {
+    gap: 1.25rem;
+}
+
+/* Helpers */
+.mr-2 {
+    margin-right: 0.5rem;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.tracking-wider {
+    letter-spacing: 0.05em;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}

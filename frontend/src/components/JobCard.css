@@ -1,0 +1,133 @@
+.job-card {
+    background-color: var(--color-bg-card);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.job-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.job-card-header {
+    padding: 1.25rem 1.25rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: rgba(249, 250, 251, 0.5);
+}
+
+.job-card-route {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.job-city {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.city-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    display: inline-block;
+}
+
+.city-dot.finish {
+    background-color: var(--color-success);
+}
+
+.route-line {
+    height: 2px;
+    flex: 1;
+    max-width: 40px;
+    background-color: var(--color-border);
+    position: relative;
+}
+
+.route-line::after {
+    content: '>';
+    position: absolute;
+    right: -5px;
+    top: -9px;
+    color: var(--color-border);
+    font-weight: bold;
+}
+
+.job-card-date {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.job-card-body {
+    padding: 1.25rem;
+    flex: 1;
+}
+
+.job-company {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 0.875rem;
+}
+
+.job-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.col-span-2 {
+    grid-column: span 2;
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-value {
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+
+.job-card-footer {
+    padding: 1rem 1.25rem;
+    background-color: #f8fafc;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.call-btn {
+    font-size: 1.125rem !important;
+    /* Büyük ve dikkat çekici */
+    padding: 1rem !important;
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+    background-color: var(--color-success) !important;
+}
+
+.call-btn:hover {
+    background-color: #059669 !important;
+}
