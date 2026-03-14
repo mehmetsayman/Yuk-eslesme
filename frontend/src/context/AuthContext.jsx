@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const API_URL = import.meta.env.VITE_API_URL || 'https://yuke-eslesme-backend.onrender.com/api';
+            const API_URL = import.meta.env.VITE_API_URL || 'https://yuk-eslesme.onrender.com/api';
             const response = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {

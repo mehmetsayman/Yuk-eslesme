@@ -1,6 +1,6 @@
 // Eğer Vite ortam değişkeni (VITE_API_URL) tanımlıysa onu kullan, yoksa Render linkini kullan.
 // Local testler için hala localhost:5000'i kullanabilirsiniz.
-const API_URL = import.meta.env.VITE_API_URL || 'https://yuke-eslesme-backend.onrender.com/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://yuk-eslesme.onrender.com/api';
 
 export const fetchJobs = async () => {
     const res = await fetch(`${API_URL}/jobs`);
