@@ -3,7 +3,26 @@ const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-app.use(cors());
+
+// Güvenli CORS ayarı: Vercel'den gelen isteklere izin ver
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'https://yuk-eslesme.vercel.app',
+    'https://yuk-platformu.vercel.app'
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS policy violation'));
+        }
+    },
+    credentials: true
+}));
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
