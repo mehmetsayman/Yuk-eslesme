@@ -40,13 +40,13 @@ const DriverDashboard = () => {
 
         if (filterOrigin) {
             result = result.filter(j =>
-                j.originCity.toLowerCase().includes(filterOrigin.toLowerCase())
+                j.originCity.toLocaleLowerCase('tr-TR').includes(filterOrigin.toLocaleLowerCase('tr-TR'))
             );
         }
 
         if (filterDestination) {
             result = result.filter(j =>
-                j.destinationCity.toLowerCase().includes(filterDestination.toLowerCase())
+                j.destinationCity.toLocaleLowerCase('tr-TR').includes(filterDestination.toLocaleLowerCase('tr-TR'))
             );
         }
 
