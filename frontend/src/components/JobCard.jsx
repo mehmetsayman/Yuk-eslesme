@@ -47,9 +47,13 @@ const JobCard = ({ job, isDriver = false, onDelete = null }) => {
                         <span className="detail-label">Tonaj</span>
                         <span className="detail-value">{job.tonnage} Ton</span>
                     </div>
-                    <div className="detail-item col-span-2">
+                    <div className="detail-item">
                         <span className="detail-label">Araç/Dorse</span>
                         <span className="detail-value">{job.trailerCriteria}</span>
+                    </div>
+                    <div className="detail-item">
+                        <span className="detail-label">Ücret</span>
+                        <span className="detail-value" style={{ color: '#2ecc71', fontWeight: 'bold' }}>{job.price || 'Belirtilmedi'}</span>
                     </div>
                 </div>
             </div>

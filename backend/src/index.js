@@ -57,6 +57,7 @@ const db = {
             loadType: "Kuru Yük",
             tonnage: 20,
             trailerCriteria: "Tenteli Dorse",
+            price: "15000 ₺",
             contactPhone: "+905551234567",
             status: "ACTIVE",
             createdAt: new Date().toISOString()
@@ -70,6 +71,7 @@ const db = {
             loadType: "Soğuk Hava",
             tonnage: 15,
             trailerCriteria: "Frigo",
+            price: "18000 ₺",
             contactPhone: "+905551234567",
             status: "ACTIVE",
             createdAt: new Date().toISOString()

@@ -19,6 +19,7 @@ const DispatcherDashboard = () => {
         loadType: '',
         tonnage: '',
         trailerCriteria: '',
+        price: '',
         contactPhone: user?.phone || ''
     });
 
@@ -57,7 +58,7 @@ const DispatcherDashboard = () => {
             setShowForm(false);
             setFormData({
                 originCity: '', destinationCity: '', loadType: '',
-                tonnage: '', trailerCriteria: '', contactPhone: user?.phone || ''
+                tonnage: '', trailerCriteria: '', price: '', contactPhone: user?.phone || ''
             });
             loadJobs(); // Refresh list
         } catch (error) {
@@ -107,6 +108,9 @@ const DispatcherDashboard = () => {
 
                         <div className="form-row">
                             <Input label="Araç/Dorse Kriteri" id="trailerCriteria" name="trailerCriteria" value={formData.trailerCriteria} onChange={handleInputChange} required placeholder="Tenteli, Frigo vb." />
+                            <Input label="Yük Ücreti" id="price" name="price" type="text" value={formData.price} onChange={handleInputChange} required placeholder="Örn: 15000 ₺" />
+                        </div>
+                        <div className="form-row">
                             <Input label="İletişim Numarası" id="contactPhone" name="contactPhone" type="tel" value={formData.contactPhone} onChange={handleInputChange} required />
                         </div>
 
