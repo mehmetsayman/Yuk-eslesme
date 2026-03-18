@@ -131,18 +131,6 @@ app.delete('/api/jobs/:id', (req, res) => {
     }
 });
 
-app.put('/api/jobs/:id', (req, res) => {
-    const { id } = req.params;
-    const index = db.jobs.findIndex(j => j.id === id);
-
-    if (index !== -1) {
-        db.jobs[index] = { ...db.jobs[index], ...req.body };
-        res.json({ success: true, job: db.jobs[index] });
-    } else {
-        res.status(404).json({ success: false, message: "İlan bulunamadı." });
-    }
-});
-
 
 app.listen(PORT, () => {
     console.log(`Backend server running on http://localhost:${PORT}`);
