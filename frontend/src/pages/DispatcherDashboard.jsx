@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { fetchDispatcherJobs, createJob, deleteJob } from '../api';
+import { fetchDispatcherJobs, createJob, deleteJob, updateJob } from '../api';
 import JobCard from '../components/JobCard';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -11,6 +11,7 @@ const DispatcherDashboard = () => {
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
+    const [editingJobId, setEditingJobId] = useState(null);
 
     // Form State
     const [formData, setFormData] = useState({
@@ -19,7 +20,6 @@ const DispatcherDashboard = () => {
         loadType: '',
         tonnage: '',
         trailerCriteria: '',
-        price: '',
         contactPhone: user?.phone || ''
     });
 
@@ -54,8 +54,14 @@ const DispatcherDashboard = () => {
                 dispatcherName: user.name
             };
 
-            await createJob(newJob);
+            if (editingJobId) {
+                await updateJob(editingJobId, newJob);
+            } else {
+                await createJob(newJob);
+            }
+
             setShowForm(false);
+            setEditingJobId(null);
             setFormData({
                 originCity: '', destinationCity: '', loadType: '',
                 tonnage: '', trailerCriteria: '', price: '', contactPhone: user?.phone || ''
@@ -64,6 +70,20 @@ const DispatcherDashboard = () => {
         } catch (error) {
             alert("Hata eklendi", error);
         }
+    };
+
+    const handleEditClick = (job) => {
+        setFormData({
+            originCity: job.originCity,
+            destinationCity: job.destinationCity,
+            loadType: job.loadType,
+            tonnage: job.tonnage.toString(),
+            trailerCriteria: job.trailerCriteria,
+            price: job.price || '',
+            contactPhone: job.contactPhone
+        });
+        setEditingJobId(job.id);
+        setShowForm(true);
     };
 
     const handleDelete = async (jobId) => {
@@ -86,7 +106,16 @@ const DispatcherDashboard = () => {
                 </div>
                 <Button
                     variant={showForm ? "outline" : "primary"}
-                    onClick={() => setShowForm(!showForm)}
+                    onClick={() => {
+                        setShowForm(!showForm);
+                        if (showForm) setEditingJobId(null);
+                        if (!showForm && !editingJobId) {
+                            setFormData({
+                                originCity: '', destinationCity: '', loadType: '',
+                                tonnage: '', trailerCriteria: '', price: '', contactPhone: user?.phone || ''
+                            });
+                        }
+                    }}
                 >
                     {showForm ? 'İptal' : '+ Yeni İlan Ekle'}
                 </Button>
@@ -94,7 +123,7 @@ const DispatcherDashboard = () => {
 
             {showForm && (
                 <div className="dashboard-card mb-6 mb-form animate-fade-in">
-                    <h3 className="mb-4">Yeni Yük Bildirimi</h3>
+                    <h3 className="mb-4">{editingJobId ? 'İlanı Düzenle' : 'Yeni Yük Bildirimi'}</h3>
                     <form onSubmit={handleSubmit} className="job-form">
                         <div className="form-row">
                             <Input label="Alınacak Şehir" id="originCity" name="originCity" value={formData.originCity} onChange={handleInputChange} required placeholder="Örn: İstanbul" />
@@ -108,15 +137,12 @@ const DispatcherDashboard = () => {
 
                         <div className="form-row">
                             <Input label="Araç/Dorse Kriteri" id="trailerCriteria" name="trailerCriteria" value={formData.trailerCriteria} onChange={handleInputChange} required placeholder="Tenteli, Frigo vb." />
-                            <Input label="Yük Ücreti" id="price" name="price" type="text" value={formData.price} onChange={handleInputChange} required placeholder="Örn: 15000 ₺" />
-                        </div>
-                        <div className="form-row">
                             <Input label="İletişim Numarası" id="contactPhone" name="contactPhone" type="tel" value={formData.contactPhone} onChange={handleInputChange} required />
                         </div>
 
                         <div className="form-actions mt-4 flex justify-end">
-                            <Button type="button" variant="outline" className="mr-2" onClick={() => setShowForm(false)}>İptal</Button>
-                            <Button type="submit">İlanı Yayınla</Button>
+                            <Button type="button" variant="outline" className="mr-2" onClick={() => { setShowForm(false); setEditingJobId(null); }}>İptal</Button>
+                            <Button type="submit">{editingJobId ? 'Değişiklikleri Kaydet' : 'İlanı Yayınla'}</Button>
                         </div>
                     </form>
                 </div>
@@ -142,6 +168,7 @@ const DispatcherDashboard = () => {
                                 key={job.id}
                                 job={job}
                                 onDelete={handleDelete}
+                                onEdit={handleEditClick}
                             />
                         ))}
                     </div>

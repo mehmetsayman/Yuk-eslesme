@@ -31,3 +31,13 @@ export const deleteJob = async (id) => {
     if (!res.ok) throw new Error('Ağ hatası');
     return res.json();
 };
+
+export const updateJob = async (id, jobData) => {
+    const res = await fetch(`${API_URL}/jobs/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jobData),
+    });
+    if (!res.ok) throw new Error('Ağ hatası');
+    return res.json();
+};

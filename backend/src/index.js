@@ -57,7 +57,6 @@ const db = {
             loadType: "Kuru Yük",
             tonnage: 20,
             trailerCriteria: "Tenteli Dorse",
-            price: "15000 ₺",
             contactPhone: "+905551234567",
             status: "ACTIVE",
             createdAt: new Date().toISOString()
@@ -71,7 +70,6 @@ const db = {
             loadType: "Soğuk Hava",
             tonnage: 15,
             trailerCriteria: "Frigo",
-            price: "18000 ₺",
             contactPhone: "+905551234567",
             status: "ACTIVE",
             createdAt: new Date().toISOString()
@@ -128,6 +126,18 @@ app.delete('/api/jobs/:id', (req, res) => {
 
     if (db.jobs.length < initialLength) {
         res.json({ success: true, message: "İlan başarıyla silindi." });
+    } else {
+        res.status(404).json({ success: false, message: "İlan bulunamadı." });
+    }
+});
+
+app.put('/api/jobs/:id', (req, res) => {
+    const { id } = req.params;
+    const index = db.jobs.findIndex(j => j.id === id);
+
+    if (index !== -1) {
+        db.jobs[index] = { ...db.jobs[index], ...req.body };
+        res.json({ success: true, job: db.jobs[index] });
     } else {
         res.status(404).json({ success: false, message: "İlan bulunamadı." });
     }

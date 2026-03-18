@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 import './JobCard.css';
 
-const JobCard = ({ job, isDriver = false, onDelete = null }) => {
+const JobCard = ({ job, isDriver = false, onDelete = null, onEdit = null }) => {
 
     // Şoförler için telefonu doğrudan aramaya yönlendir
     const handleCall = () => {
@@ -47,13 +47,9 @@ const JobCard = ({ job, isDriver = false, onDelete = null }) => {
                         <span className="detail-label">Tonaj</span>
                         <span className="detail-value">{job.tonnage} Ton</span>
                     </div>
-                    <div className="detail-item">
+                    <div className="detail-item col-span-2">
                         <span className="detail-label">Araç/Dorse</span>
                         <span className="detail-value">{job.trailerCriteria}</span>
-                    </div>
-                    <div className="detail-item">
-                        <span className="detail-label">Ücret</span>
-                        <span className="detail-value" style={{ color: '#2ecc71', fontWeight: 'bold' }}>{job.price || 'Belirtilmedi'}</span>
                     </div>
                 </div>
             </div>
@@ -70,13 +66,24 @@ const JobCard = ({ job, isDriver = false, onDelete = null }) => {
                         İşi Al (Ara)
                     </Button>
                 ) : (
-                    <Button
-                        variant="danger"
-                        size="sm"
-                        onClick={() => onDelete(job.id)}
-                    >
-                        İlanı Kaldır
-                    </Button>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                        {onEdit && (
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => onEdit(job)}
+                            >
+                                Düzenle
+                            </Button>
+                        )}
+                        <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={() => onDelete(job.id)}
+                        >
+                            İlanı Kaldır
+                        </Button>
+                    </div>
                 )}
             </div>
         </div>
