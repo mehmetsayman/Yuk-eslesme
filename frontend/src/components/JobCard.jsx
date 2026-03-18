@@ -69,7 +69,7 @@ const JobCard = ({ job, isDriver = false, onDelete = null, onEdit = null }) => {
                     <div style={{ display: 'flex', gap: '8px' }}>
                         {onEdit && (
                             <Button
-                                variant="outline"
+                                variant="primary"
                                 size="sm"
                                 onClick={() => onEdit(job)}
                             >
