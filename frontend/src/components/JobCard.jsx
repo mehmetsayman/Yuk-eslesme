@@ -2,7 +2,7 @@ import React from 'react';
 import Button from './Button';
 import './JobCard.css';
 
-const JobCard = ({ job, isDriver = false, onDelete = null }) => {
+const JobCard = ({ job, isDriver = false, onDelete = null, onEdit = null }) => {
 
     // Şoförler için telefonu doğrudan aramaya yönlendir
     const handleCall = () => {
@@ -66,13 +66,24 @@ const JobCard = ({ job, isDriver = false, onDelete = null }) => {
                         İşi Al (Ara)
                     </Button>
                 ) : (
-                    <Button
-                        variant="danger"
-                        size="sm"
-                        onClick={() => onDelete(job.id)}
-                    >
-                        İlanı Kaldır
-                    </Button>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                        {onEdit && (
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => onEdit(job)}
+                            >
+                                Düzenle
+                            </Button>
+                        )}
+                        <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={() => onDelete(job.id)}
+                        >
+                            İlanı Kaldır
+                        </Button>
+                    </div>
                 )}
             </div>
         </div>
