@@ -1,27 +1,22 @@
 :root {
-    /* Kurumsal Mavi Renk Paleti */
-    --color-primary: #1E3A8A;
-    /* Koyu Lacivert - Güven veren */
-    --color-primary-hover: #1E40AF;
-    --color-secondary: #3B82F6;
-    /* Mavi - Vurgu renkleri için */
-    --color-secondary-hover: #2563EB;
-    --color-accent: #F59E0B;
-    /* Turuncu/Sarı vurgu - İlan badge'leri vs. */
+    /* Koyu Lacivert ve Canlı Renk Paleti */
+    --color-primary: #06b6d4; /* Canlı Cyan/Neon Mavi */
+    --color-primary-hover: #22d3ee;
+    --color-secondary: #8b5cf6; /* Canlı Mor */
+    --color-secondary-hover: #a78bfa;
+    --color-accent: #f43f5e; /* Neon Pembe/Kırmızı */
 
-    --color-text-main: #111827;
-    /* Çok koyu gri - Metin okunaklılığı */
-    --color-text-muted: #6B7280;
-    --color-text-light: #F9FAFB;
+    --color-text-main: #f8fafc; /* Beyaza yakın */
+    --color-text-muted: #94a3b8; /* Açık gri */
+    --color-text-light: #ffffff;
 
-    --color-bg-body: #F3F4F6;
-    /* Açık gri arka plan - Derinlik için */
-    --color-bg-card: #FFFFFF;
+    --color-bg-body: #0f172a; /* Çok koyu lacivert */
+    --color-bg-card: #1e293b; /* Kart arka planı (koyu lacivert) */
 
-    --color-border: #E5E7EB;
+    --color-border: #334155;
 
-    --color-success: #10B981;
-    --color-danger: #EF4444;
+    --color-success: #10b981;
+    --color-danger: #f43f5e;
 
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --border-radius-sm: 4px;
